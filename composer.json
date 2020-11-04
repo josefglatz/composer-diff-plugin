@@ -1,26 +1,30 @@
 {
-    "name": "mercari/composer-diff-plugin",
-    "description": "composer plugin to show library version diff at \"composer update\"",
+    "name": "josefglatz/composer-diff-plugin",
+    "description": "composer plugin which creates a composer.list file and shows library version diff at \"composer update\"",
     "type": "composer-plugin",
     "license": "MIT",
     "authors": [
         {
             "name": "Hiraku NAKANO",
             "email": "hiraku@mercari.com"
+        },
+        {
+            "name": "Josef Glatz",
+            "email": "j.glatz@supseven.at"
         }
     ],
     "require": {
-        "composer-plugin-api": ">=1.0.0-alpha10"
+        "composer-runtime-api": "^2"
     },
     "require-dev": {
-        "composer/composer": "1.0.0-alpha10"
+        "composer/composer": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "Mercari\\ComposerDiffPlugin\\": "src/"
+            "JosefGlatz\\ComposerDiffPlugin\\": "src/"
         }
     },
     "extra": {
-        "class": "Mercari\\ComposerDiffPlugin\\DiffPlugin"
+        "class": "JosefGlatz\\ComposerDiffPlugin\\DiffPlugin"
     }
 }
