@@ -1,9 +1,30 @@
 <?php
 /*
- * mercari/composer-diff-plugin
- * @license MIT https://github.com/mercari/composer-diff-plugin
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 Mercari, Inc https://github.com/mercari/composer-diff-plugin
+ * Copyright (c) 2020 Josef Glatz, supseven.at
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
-namespace Mercari\ComposerDiffPlugin;
+
+namespace JosefGlatz\ComposerDiffPlugin;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
@@ -32,13 +53,13 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $this->composer = $composer;
         $this->io = $io;
     }
-    
+
     public function uninstall(Composer $composer, IOInterface $io)
     {
         $this->composer = $composer;
         $this->io = $io;
     }
-    
+
     public function deactivate(Composer $composer, IOInterface $io)
     {
         $this->composer = $composer;
@@ -72,7 +93,7 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
 
         $io->write("\n" . '<info>[[[ library version information ]]]</info>');
         if ($before == $after) {
-            $io->write('no change!'); 
+            $io->write('no change!');
             return;
         }
         $output = IO::getSymfonyOutput($io);
