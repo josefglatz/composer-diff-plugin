@@ -18,6 +18,9 @@
 
 ## Install/Uninstall
 
+Depending on your use case it makes sense to add this plugin globally in
+your development environment.
+
 ### Global
 
 ```bash
@@ -30,8 +33,8 @@ $ composer global remove josefglatz/composer-diff-plugin
 
 ### Locally
 
-It's recommended to add it as dev-dependency only for a specific
-project.
+When installing the plugin locally for a specific project it's
+recommended to add it as dev-dependency only.
 
 ```bash
 $ composer --dev require josefglatz/composer-diff-plugin
@@ -50,4 +53,5 @@ Licensed under the [MIT License](LICENSE)
 
 ## Support
 
-Many thanks to my employer [supseven.at](https://www.supseven.at/) for sponsoring work time.
+Many thanks to my employer [supseven.at](https://www.supseven.at/) for
+sponsoring work time.
