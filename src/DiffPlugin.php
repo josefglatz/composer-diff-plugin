@@ -187,7 +187,7 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
             $libs[$p->getPrettyName()] = array(
                 'version' => $p->getFullPrettyVersion(),
                 'license' => $p->getLicense(),
-                'type' => $p->getDistType(),
+                'type' => $p->getType(),
                 'sourceRef' => $p->getSourceReference(),
             );
         }
