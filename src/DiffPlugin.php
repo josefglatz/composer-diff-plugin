@@ -188,7 +188,6 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
                 'version' => $p->getFullPrettyVersion(),
                 'license' => $p->getLicense(),
                 'type' => $p->getType(),
-                'sourceRef' => $p->getSourceReference(),
             );
         }
 
@@ -207,12 +206,11 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $table->setStyle('compact');
         $table->getStyle()->setVerticalBorderChar('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
-        $table->setHeaders(array('Package Name', 'Version', 'Source Reference', 'License', 'Type'));
+        $table->setHeaders(array('Package Name', 'Version', 'License', 'Type'));
         foreach ($packages as $name => $p) {
             $table->addRow(array(
                 $name,
                 $p['version'],
-                $p['sourceRef'],
                 implode(', ', $p['license']) ?: 'none',
                 $p['type'],
             ));
