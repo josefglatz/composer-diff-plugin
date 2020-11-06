@@ -3,7 +3,7 @@
  * The MIT License (MIT)
  *
  * Copyright (c) 2016 Mercari, Inc https://github.com/mercari/composer-diff-plugin
- * Copyright (c) 2020 Josef Glatz, supseven.at
+ * Copyright (c) 2020 Josef Glatz
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -187,6 +187,8 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
             $libs[$p->getPrettyName()] = array(
                 'version' => $p->getFullPrettyVersion(),
                 'license' => $p->getLicense(),
+                'type' => $p->getDistType(),
+                'sourceRef' => $p->getSourceReference(),
             );
         }
 
@@ -205,12 +207,14 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $table->setStyle('compact');
         $table->getStyle()->setVerticalBorderChar('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
-        $table->setHeaders(array('Name', 'Version', 'License'));
+        $table->setHeaders(array('Package Name', 'Version', 'Source Reference', 'License', 'Type'));
         foreach ($packages as $name => $p) {
             $table->addRow(array(
                 $name,
                 $p['version'],
+                $p['sourceRef'],
                 implode(', ', $p['license']) ?: 'none',
+                $p['type'],
             ));
         }
         $table->render();

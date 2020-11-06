@@ -1,44 +1,53 @@
-composer-diff-plugin
-====================
+# josefglatz/composer-diff-plugin
 
-composer plugin to show library version diff at "composer update".
+> A composer plugin...
+> * to show library version diff at "composer update" (e.g. for putting
+>   into your GIT commit message),
+> * to create and update a `composer.list` file next to the
+>   `composer.json`.
+
 
 ![composer-diff-plugin](https://cloud.githubusercontent.com/assets/835251/11893915/46c9bb40-a5b7-11e5-8340-db3917d04221.png)
 
-feature
------------------
+## Features
 
 * print upgrade/downgrade/add/remove of libraries.
-* output `composer.list` file which can be added to project's GIT repository.
+* output `composer.list` file which can be added to project's GIT
+  repository.
 
 
-Install
------------------
+## Install/Uninstall
+
+### Global
 
 ```bash
 $ composer global require josefglatz/composer-diff-plugin
 ```
 
-Uninstall
-----------------
-
 ```bash
 $ composer global remove josefglatz/composer-diff-plugin
 ```
 
-License
----------------
+### Locally
 
-Copyright 2016 Mercari, Inc.
-Copyright 2020 Josef Glatz, supseven.at
+It's recommended to add it as dev-dependency only for a specific
+project.
 
-Licensed under the MIT License
+```bash
+$ composer --dev require josefglatz/composer-diff-plugin
+```
 
-Contribution
---------------
+```bash
+$ composer --dev remove josefglatz/composer-diff-plugin
+```
 
-Fork the project, create a feature branch, and send us a pull request.
+## License
 
-Please read the CLA carefully before submitting your contribution to Mercari repository.
+Copyright 2016 Mercari, Inc.  
+Copyright 2020 Josef Glatz
 
-https://www.mercari.com/cla/
+Licensed under the [MIT License](LICENSE)
+
+## Support
+
+Many thanks to my employer [supseven.at](https://www.supseven.at/) for sponsoring work time.
