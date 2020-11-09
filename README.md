@@ -46,7 +46,7 @@ $ composer --dev remove josefglatz/composer-diff-plugin
 
 ## License
 
-Copyright 2016 Mercari, Inc.  
+Copyright 2016 Mercari, Inc.
 Copyright 2020 Josef Glatz
 
 Licensed under the [MIT License](LICENSE)
