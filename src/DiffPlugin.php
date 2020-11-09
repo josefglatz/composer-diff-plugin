@@ -76,12 +76,20 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
             ScriptEvents::POST_UPDATE_CMD => array(
                 'onPostUpdate',
             ),
+            ScriptEvents::POST_AUTOLOAD_DUMP => [
+                'onAutoloadDump',
+            ]
         );
     }
 
     public function onPreUpdate(Event $arg)
     {
         $this->before = $this->getPackages();
+    }
+
+    public function onAutoloadDump(Event $arg)
+    {
+        $this->writeLibraryList($this->getPackages());
     }
 
     public function onPostUpdate(Event $arg)
@@ -101,7 +109,6 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
 
         $table = new Table($output);
         $table->setStyle('compact');
-        $table->getStyle()->setVerticalBorderChars('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
 
         // deleted packages
@@ -204,7 +211,6 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $output = new StreamOutput($fp);
         $table = new Table($output);
         $table->setStyle('compact');
-        $table->getStyle()->setVerticalBorderChars('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
         $table->setHeaders(array('Package Name', 'Version', 'License', 'Type'));
         $table->setColumnWidths([ 50, 25, 20, 15 ]);
