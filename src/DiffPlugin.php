@@ -35,6 +35,7 @@ use Composer\Plugin\PluginInterface;
 use Composer\Script\ScriptEvents;
 use Composer\Script\Event;
 use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Output\StreamOutput;
 
 class DiffPlugin implements PluginInterface, EventSubscriberInterface
 {
@@ -201,12 +202,13 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
     {
         $fp = fopen('composer.list', 'wb');
 
-        $output = new \Symfony\Component\Console\Output\StreamOutput($fp);
+        $output = new StreamOutput($fp);
         $table = new Table($output);
         $table->setStyle('compact');
         $table->getStyle()->setVerticalBorderChar('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
         $table->setHeaders(array('Package Name', 'Version', 'License', 'Type'));
+        $table->setColumnWidths([ 50, 25, 20, 15 ]);
         foreach ($packages as $name => $p) {
             $table->addRow(array(
                 $name,
