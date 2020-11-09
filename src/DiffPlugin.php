@@ -213,7 +213,6 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $table->setStyle('compact');
         $table->getStyle()->setCellRowContentFormat('%s  ');
         $table->setHeaders(array('Package Name', 'Version', 'License', 'Type'));
-        $table->setColumnWidths([ 50, 25, 20, 15 ]);
         foreach ($packages as $name => $p) {
             $table->addRow(array(
                 $name,
@@ -222,6 +221,7 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
                 $p['type'],
             ));
         }
+        $table->setColumnWidths([ 50, 25, 20, 15 ]);
         $table->render();
 
         unset($table);
