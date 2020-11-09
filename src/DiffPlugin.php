@@ -109,6 +109,9 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
 
         $table = new Table($output);
         $table->setStyle('compact');
+        if (method_exists($table, 'setVerticalBorderChars')) {
+            $table->getStyle()->setVerticalBorderChars('');
+        }
         $table->getStyle()->setCellRowContentFormat('%s  ');
 
         // deleted packages
@@ -211,6 +214,9 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $output = new StreamOutput($fp);
         $table = new Table($output);
         $table->setStyle('compact');
+        if (method_exists($table, 'setVerticalBorderChars')) {
+            $table->getStyle()->setVerticalBorderChars('');
+        }
         $table->getStyle()->setCellRowContentFormat('%s  ');
         $table->setHeaders(array('Package Name', 'Version', 'License', 'Type'));
         foreach ($packages as $name => $p) {
@@ -221,7 +227,9 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
                 $p['type'],
             ));
         }
-        $table->setColumnWidths([ 50, 25, 20, 15 ]);
+        if (method_exists($table, 'setColumnWidths')) {
+            $table->setColumnWidths([ 50, 25, 20, 15 ]);
+        }
         $table->render();
 
         unset($table);
