@@ -173,7 +173,6 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
     {
         $composer = $this->composer;
 
-        $root = $composer->getPackage();
         $repo = $composer->getRepositoryManager()->getLocalRepository();
 
         $packages = array();
