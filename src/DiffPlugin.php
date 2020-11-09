@@ -81,12 +81,12 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
 
     public function onPreUpdate(Event $arg)
     {
-        $this->before = $this->licenses();
+        $this->before = $this->getPackages();
     }
 
     public function onPostUpdate(Event $arg)
     {
-        $this->after = $this->licenses();
+        $this->after = $this->getPackages();
         $io = $this->io;
 
         $before = $this->before;
@@ -167,9 +167,9 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
     }
 
     /**
-     * to array composer licenses
+     * to array composer packages
      */
-    protected function licenses()
+    protected function getPackages()
     {
         $composer = $this->composer;
 
