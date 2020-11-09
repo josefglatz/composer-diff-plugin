@@ -101,7 +101,7 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
 
         $table = new Table($output);
         $table->setStyle('compact');
-        $table->getStyle()->setVerticalBorderChars('', '');
+        $table->getStyle()->setVerticalBorderChars('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
 
         // deleted packages
@@ -204,7 +204,7 @@ class DiffPlugin implements PluginInterface, EventSubscriberInterface
         $output = new StreamOutput($fp);
         $table = new Table($output);
         $table->setStyle('compact');
-        $table->getStyle()->setVerticalBorderChars('', '');
+        $table->getStyle()->setVerticalBorderChars('');
         $table->getStyle()->setCellRowContentFormat('%s  ');
         $table->setHeaders(array('Package Name', 'Version', 'License', 'Type'));
         $table->setColumnWidths([ 50, 25, 20, 15 ]);
